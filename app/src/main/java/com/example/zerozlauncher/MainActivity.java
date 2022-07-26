@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private List<SingleApp> installedAppsList = new ArrayList<>();
     private List<SingleApp> filteredAppsList = new ArrayList<>();
 
+    //remove this comment
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
