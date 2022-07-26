@@ -31,7 +31,7 @@ public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull AppsRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.ivAppIcon.setImageDrawable(filteredAppsList.get(position).appIcon);
-        holder.tvAppName.setText(filteredAppsList.get(position).appName);
+//        holder.tvAppName.setText(filteredAppsList.get(position).appName);
 
         holder.layoutSingleApp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,12 +50,12 @@ public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerVi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ConstraintLayout layoutSingleApp;
         public ImageView ivAppIcon;
-        public TextView tvAppName;
+//        public TextView tvAppName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.layoutSingleApp = itemView.findViewById(R.id.layoutSingleApp);
             this.ivAppIcon = itemView.findViewById(R.id.ivAppIcon);
-            this.tvAppName = itemView.findViewById(R.id.tvAppName);
+//            this.tvAppName = itemView.findViewById(R.id.tvAppName);
         }
     }
 }
