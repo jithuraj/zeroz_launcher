@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerViews() {
+
         recyclerviewAppsAdapter = new AppsRecyclerViewAdapter(filteredAppsList);
         recyclerViewApps.setLayoutManager(new GridLayoutManager(this,5));
         recyclerViewApps.setAdapter(recyclerviewAppsAdapter);
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerviewCharactersAdapter = new KeyboardRecyclerViewAdapter(installedAppsList,filteredAppsList,recyclerviewAppsAdapter,recyclerViewItemCharacters, screenWidth/9);
         recyclerviewCharacters.setLayoutManager(new GridLayoutManager(this,9));
         recyclerviewCharacters.setAdapter(recyclerviewCharactersAdapter);
+
     }
 
     private void getScreenWidth() {
@@ -81,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
                     resolveInfo.loadIcon(getPackageManager()),
                     resolveInfo.activityInfo.packageName));
         }
-        recyclerviewAppsAdapter.notifyDataSetChanged();
-        recyclerviewCharactersAdapter.notifyDataSetChanged();
         recyclerviewNumbersAdapter.notifyDataSetChanged();
+        recyclerviewCharactersAdapter.notifyDataSetChanged();
+        recyclerviewAppsAdapter.notifyDataSetChanged();
     }
 
 }
