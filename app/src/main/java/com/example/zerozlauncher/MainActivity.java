@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         pkgAppsList = getApplicationContext().getPackageManager().queryIntentActivities( mainIntent, 0);
         for (ResolveInfo resolveInfo : pkgAppsList){
-            installedAppsList.add(new SingleApp((String) resolveInfo.loadLabel(getPackageManager()),
+            installedAppsList.add(new SingleApp(resolveInfo.loadLabel(this.getPackageManager()).toString(),
                     resolveInfo.loadIcon(getPackageManager()),
                     resolveInfo.activityInfo.packageName));
         }
