@@ -38,6 +38,8 @@ public class AppsRecyclerViewAdapter extends RecyclerView.Adapter<AppsRecyclerVi
             public void onClick(View view) {
                 Context context = holder.layoutSingleApp.getContext();
                 context.startActivity(context.getPackageManager().getLaunchIntentForPackage(filteredAppsList.get(holder.getAdapterPosition()).appPackageName));
+                filteredAppsList.clear();
+                notifyDataSetChanged();
             }
         });
     }
