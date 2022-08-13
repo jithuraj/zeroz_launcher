@@ -1,5 +1,6 @@
 package com.example.zerozlauncher;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class KeyboardRecyclerViewAdapter extends RecyclerView.Adapter<KeyboardRe
     private List<String> characterList = new ArrayList<>();
     private AppsRecyclerViewAdapter recyclerviewAppsAdapter;
     private int itemSize;
+    private String TAG = "jithu";
 
     public KeyboardRecyclerViewAdapter(List<SingleApp> installedApps,List<SingleApp> filteredAppsList,AppsRecyclerViewAdapter recyclerviewAppsAdapter,String[] characterList, int itemSize) {
         this.installedApps = installedApps;
@@ -47,10 +49,9 @@ public class KeyboardRecyclerViewAdapter extends RecyclerView.Adapter<KeyboardRe
             public void onClick(View view) {
                 filteredAppsList.clear();
                 for (SingleApp singleApp : installedApps){
-//                 if (singleApp.appName.contains(currentItem)){
-                 if ( Pattern.compile(Pattern.quote(currentItem), Pattern.CASE_INSENSITIVE).matcher(singleApp.appName).find()){
+                    if (String.valueOf(singleApp.appName.charAt(0)).matches(currentItem)){
                     filteredAppsList.add(singleApp);
-                 }
+                    }
                 }
                 recyclerviewAppsAdapter.notifyDataSetChanged();
             }
