@@ -1,6 +1,7 @@
 package com.example.zerozlauncher;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,11 +10,18 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerviewNumbers;
@@ -30,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private List<ResolveInfo> pkgAppsList = new ArrayList<>();
     private List<SingleApp> installedAppsList = new ArrayList<>();
     private List<SingleApp> filteredAppsList = new ArrayList<>();
-
-    //remove this comment
+    private ConstraintLayout timeWidgetLayout;
+    private TextView tvTimeWidget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +47,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setIdsToViews();
+        setTimeToTimeWidget();
         getScreenWidth();
         setUpRecyclerViews();
         getInstalledAppDetails();
+
+    }
+
+    private void setTimeToTimeWidget() {
+        String currentTime = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(new Date());
+        Log.i(TAG, "setTimeToTimeWidget: "+currentTime);
+        tvTimeWidget.setText(currentTime);
 
     }
 
@@ -72,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerviewCharacters = findViewById(R.id.recyclervieCharacters);
         recyclerViewApps = findViewById(R.id.recyclerViewApps);
         recyclerViewItem = findViewById(R.id.recyclerViewItem);
+        timeWidgetLayout = findViewById(R.id.timeWidgetLayout);
+        tvTimeWidget = findViewById(R.id.tvTimeWidget);
     }
 
     private void getInstalledAppDetails() {
